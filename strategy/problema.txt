@@ -1,0 +1,5 @@
+A ideia é fazer a inversao de dependencia e generalizar determinados metodos.
+No nosso caso, temos o guerreiro antigo onde estava tudo mundo especifico e 
+agora esta mais generalizado para novas acoes que ele possa vir a fazer.
+
+é extamente o principio da inversao da dependencia.

@@ -1,0 +1,7 @@
+Vemos que temos formatos diferentes para cada método de cada
+framework, então a ideia é criar uma camada de 'adapter' para
+adaptar a uma saída desejada.
+
+ou seja, queremos passar a usar o framework2 no momento, entao
+criamos um adapater para adapatar a saida do nosso framework2 ao
+nosso codigo.
