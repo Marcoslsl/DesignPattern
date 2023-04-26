@@ -1,0 +1,92 @@
+# QUESTÃO 1
+
+from typing import List
+
+class VetorMoedas:
+    """Vetor de moedas."""
+
+    def __init__(self) -> None:
+        """Construtor."""
+        self._valor_final_moedas = 0
+        self._dia = 0
+
+    def _passar_dia(self) -> None:
+        """Passa um dia."""
+        self._dia += 1
+
+    def _alterar_valor(self, valor: int) -> int:
+        """Retorna o valor seguindo a regra das moedas.
+        
+        Parameters
+        ----------
+        valor: int
+            Valor de cada dia para ser alterado segundo a regra descrita.
+        """
+        if valor == 0:
+            return 0
+        else:
+            return valor*2
+
+    def _alterar_valor_final(self, valor: int) -> None:
+        """Altera valor final.
+        
+        Parameters
+        ----------
+        valor: int
+            Valor que vai ser atribuido ao valor final de moedas de cada dia.
+        """
+        self._valor_final_moedas = valor
+
+
+    def percorrer_vetor(self, vetor: List[int]) -> str:
+        """Percore os valores do vetor e realiza as acoes.
+        
+        Parameters
+        ----------
+        vetor: List[int]
+            Vetor de números inteiros que representa a quantidade de moedas
+            para serem acrescentadas ou retiradas em cada dia, sujeita as 
+            regras descritas na atividade.
+        """
+        for idx, valor in enumerate(vetor):
+
+            if valor < 0:
+                valor = valor*2
+
+            valor_final = self._valor_final_moedas
+            if idx == 0:
+                self._valor_final_moedas = self._alterar_valor(valor)
+            else:
+                valor_do_proximo_dia =  self._alterar_valor(valor + self._valor_final_moedas)
+                self._alterar_valor_final(valor_do_proximo_dia)
+
+
+                if self._valor_final_moedas < 0:
+                    raise ValueError(
+                        f"No dia {self._dia} você quis retirar {valor} moeadas, "
+                        f"mas só tem {valor_final} moedas. "
+                        f"Obedeça a regra que r = (n - m) e r >= m. "
+                        f"Onde n é o número total de moedas até o momento "
+                        f"e m é o número de moedas que você quer retirar."
+                    )
+
+            self._passar_dia()
+
+        return f"No dia {self._dia} a quantidade de moedas vai ser: {self._valor_final_moedas}"
+
+moeda = VetorMoedas()
+vetor_teste = [1,-1,2,0,4]
+r = moeda.percorrer_vetor(vetor_teste)
+print(r)
+
+# QUESTÃO 2
+
+# Esse problema cresceria de forma exponencial pois quanto mais aumentar
+# o array de entrada mais sub-divisoes pela metade irão ser realizadas, 
+# aumentando assim de forma exponencial o tempo de execução desse algoritmo.
+
+# QUESTÃO 3
+
+# o protocolo HTTP que está sendo usado não é seguro por si só. As informações
+# não são criptografadas então quem tiver acesso ao tráfego da rede pode 
+# interceptar as informações.

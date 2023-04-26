@@ -1,0 +1,2 @@
+a ideia do singleton é basicamente oq fazemos ao exportar alguma coisa no
+__init__.py
